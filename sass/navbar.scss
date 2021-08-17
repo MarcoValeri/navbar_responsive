@@ -1,11 +1,20 @@
-nav {
-    font-family: 'Open Sans Condensed', sans-serif;
-    padding: 1rem;
+// Main Navbar
+.header-navbar {
+    position: relative;
+    padding: 2rem;
     background-color: #000;
 
     input,
     span {
         display: none;
+    }
+
+    .header-navbar-menu-link {
+        position: absolute;
+        display: inline;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     li {
@@ -17,10 +26,15 @@ nav {
     a {
         color: #fff;
         text-decoration: none;
+        transition-property: text-decoration, color;
+        transition-delay: 250ms;
+        transition-duration: .5s;
 
         &:hover {
+            color: #ffff00;
             text-decoration: underline;
-            text-decoration-color: #ff0000;
+            text-decoration-color: #ffff00;
+            text-decoration-thickness: 20%;
         }
     }
 
@@ -28,11 +42,11 @@ nav {
 
 /*
 * Media Queries
-* max-width: 767px
+* max-width: 1024px
 */
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
 
-    nav {
+    .header-navbar {
 
         .header-navbar-menu-toggle {
             display: block;
@@ -99,16 +113,33 @@ nav {
             input:checked ~ span:nth-last-child(2) {
                 transform: rotate(-45deg) translate(0, 1px);
             }
+
+            .header-navbar-menu-logo,
+            .header-navbar-menu-link,
+            .header-navbar-menu-quote {
+                display: block;
+            }
+
+            .header-navbar-menu-link {
+                position: relative;
+                transform: translate(-50%, 0%);
+            }
+
+            .header-navbar-menu-quote {
+                float: none;
+                margin: 0rem;
+            }
+
         }
 
-        .navbar-menu {
+        .header-navbar-menu {
             position: absolute;
             width: 90%;
             margin: -100px 0 0 -50px;
             padding: 50px;
             padding-top: 125px;
 
-            background: #111;
+            background: #000;
             list-style-type: none;
             -webkit-font-smoothing: antialiased;
 
@@ -122,11 +153,18 @@ nav {
                 font-size: 22px;
                 display: block;
             }
+
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
         }
 
         input:checked ~ ul {
             transform: none;
         }
-    }
+        }
 
-}
+    }
